@@ -1,4 +1,4 @@
-# jingdong
+# vue仿京东页面
 
 ## Project setup
 ```
