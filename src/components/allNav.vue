@@ -193,7 +193,7 @@ export default {
     padding 20px 0 10px 0
   }
   .nav-watch-left {
-    width 600px
+    width 800px
     display flex
     flex-direction column
   }
@@ -270,6 +270,7 @@ export default {
     color #c81623
     cursor pointer
   }
+  
   // 导航栏二（轮播图）
   .nav2-img {
     width 590px
@@ -388,6 +389,13 @@ export default {
     }
     #drop-img{
       display none
+    }
+    .nav-watch-left {
+      width 600px
+    }
+    .nav-watch {
+      width 800px
+      transform translateX(calc(50% - 230px))
     }
   }
 </style>

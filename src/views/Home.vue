@@ -10,7 +10,6 @@
     <seckill id="seckill"/>
     <spcFls id="spcFls"/>
     <find/>
-    
   </div>
 </template>
 
@@ -37,10 +36,11 @@ export default {
       {name:'京东秒杀',id:'seckill'},
       {name:'京东秒杀',id:'seckill'},
       {name:'京东秒杀',id:'seckill'},
-      {name:'京东秒杀',id:'seckill'},]
+      {name:'返回顶部',id:'top'},]
     }
   },
   mounted: function(){
+    //页面浮动元素控制
     var mytime = setInterval(go,10)
     function go(){
       var t =document.getElementById("home").scrollTop;
@@ -54,8 +54,41 @@ export default {
     }
   },
   methods: {
+    //页内滚动跳转
     goto(id){
-      document.getElementById("home").scrollTop=document.getElementById(id).offsetTop-70
+      if(id==="top"){
+        var timer = null
+        clearInterval(timer);
+        let speed=document.getElementById("home").scrollTop/50;
+        timer = setInterval(function() {
+          if (document.getElementById("home").scrollTop<=0) {
+            clearInterval(timer);
+          } else {
+            document.getElementById("home").scrollTop=document.getElementById("home").scrollTop-speed
+          }
+        }, 1)
+      }
+      else{
+        var timer = null
+        clearInterval(timer);
+        let speed=(document.getElementById("home").scrollTop-document.getElementById(id).offsetTop+70)/50
+        let offtop=document.getElementById(id).offsetTop-70
+        timer = setInterval(function() {
+          if(speed>=0){
+            if (document.getElementById("home").scrollTop<=offtop) {
+              clearInterval(timer);
+            } else {
+              document.getElementById("home").scrollTop=document.getElementById("home").scrollTop-speed
+            }
+          }else {
+            if (document.getElementById("home").scrollTop>=offtop||document.getElementById("home").scrollTop>=(document.getElementById("home").scrollHeight-document.getElementById("home").clientHeight-10)) {
+              clearInterval(timer);
+            } else {
+              document.getElementById("home").scrollTop=document.getElementById("home").scrollTop-speed
+            }
+          }
+        }, 1)
+      }
     }
   }
 }

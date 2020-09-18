@@ -187,4 +187,14 @@ export default {
 #hotNavText:nth-child(2):hover {
   color #d81e06
 }
+
+  //响应页面宽度
+  @media only screen and (max-width: 1350px) {
+    #JD2{
+      display none 
+    }
+    .query{
+      width 990px
+    }
+  }
 </style>
