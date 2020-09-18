@@ -1,19 +1,6 @@
 # vue仿京东页面
 
-## Project setup
+## 概述
 ```
-npm install
+本项目主要用于练习HTML5和CSS3，大部分组件的动效及交互都不通过JS实现
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
