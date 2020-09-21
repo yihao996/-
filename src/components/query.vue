@@ -7,7 +7,8 @@
           <div class="query-form-t">
             <div class="query-input-box">
               <input class="query-input" type="text">
-              <img class="query-icon" src="..\assets\相机.png" alt="">
+              <div></div>
+              <img class="query-icon" id="camera" src="..\assets\相机.png" alt="">
               <button class="query-btn">
                 <img class="query-img" src="..\assets\查找.png" alt="">
               </button>
@@ -120,6 +121,12 @@ export default {
   height 20px
   padding 6px 10px
 }
+// 滤镜法改变图片颜色
+#camera:hover {
+  cursor pointer
+  filter sepia(100%) hue-rotate(309deg) saturate(10000%)
+}
+
 .query-btn {
     width 58px
     height 32px

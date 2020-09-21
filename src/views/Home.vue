@@ -1,5 +1,5 @@
 <template>
-  <div class="home" id="home">
+  <div class="home" id="home" ondragstart="return false">
     <floatTop id="floatTop"/>
     <div class="float-right" id="floatRight">
       <div v-for="(item,i) in floatNav" :key="i" class="right-item" @click="goto(item.id)">{{item.name}}</div>
@@ -90,6 +90,7 @@ export default {
         }, 1)
       }
     }
+  
   }
 }
 </script>
@@ -101,6 +102,7 @@ export default {
   height 100%
   width 100%
   overflow-y:scroll
+  user-select: none;
 }
 #floatTop {
   margin-top -54px
@@ -138,6 +140,11 @@ export default {
   color #ffffff
   cursor pointer
 }
+
+// 灰度页面
+// *{
+//   filter grayscale(100%)
+// }
 
   //响应页面宽度
   @media only screen and (max-width: 1350px) {
