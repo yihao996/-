@@ -10,6 +10,7 @@
     <seckill id="seckill"/>
     <spcFls id="spcFls"/>
     <find/>
+    <nice/>
   </div>
 </template>
 
@@ -22,11 +23,12 @@ import seckill from '@/components/seckill.vue'
 import spcFls from '@/components/spcFls.vue'
 import find from '@/components/find.vue'
 import floatTop from '@/components/floatTop.vue'
+import nice from '@/components/nice.vue'
 
 export default {
   name: 'Home',
   components: {
-    top,query,allNav,seckill,spcFls,find,floatTop
+    top,query,allNav,seckill,spcFls,find,floatTop,nice
   },
   data() {
     return {

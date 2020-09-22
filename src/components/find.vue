@@ -74,46 +74,52 @@ export default {
         var distanceX = oevent.clientX - scollPoint.offsetLeft;
         var m=0;
         var n=0;
+        // 清除滚动动画
         scollPoint.style.animation='none'
         list.style.animation='none'
         document.onmousemove = function(ev) {
           var oevent=ev||event;
           scollPoint.style.marginLeft='15px'
           if(scollPoint.style.marginLeft.slice(0,-2)>=15&&scollPoint.style.marginLeft.slice(0,-2)<=document.getElementById('line').offsetWidth-64){
+            
+            // 计算偏移量使图片随滚动条移动
             scollPoint.style.marginLeft = oevent.clientX - distanceX-200-document.getElementById('findLeft').offsetLeft+'px'
-            list.style.marginLeft = -(oevent.clientX - distanceX-200-document.getElementById('findLeft').offsetLeft-15)*1200/681+'px'
-            // 获取偏移量
-            m=scollPoint.style.marginLeft
-            n=list.style.marginLeft
-            // 设置边界
+            list.style.marginLeft = -(oevent.clientX - distanceX-200-document.getElementById('findLeft').offsetLeft-15)*2000/(document.getElementById('line').offsetWidth-79)+'px'
+            
+            // 设置边界,要在设置偏移量之前进行判断
             if(scollPoint.style.marginLeft.slice(0,-2)<15){
               list.style.marginLeft = '0px'
               scollPoint.style.marginLeft = '15px'
             }else if (scollPoint.style.marginLeft.slice(0,-2)>document.getElementById('line').offsetWidth-64){
               scollPoint.style.marginLeft = document.getElementById('line').offsetWidth-64+'px'
-              list.style.marginLeft = '-1200px'
+              list.style.marginLeft = '-2000px'
             }
+            
+            // 获取偏移量
+            m=scollPoint.style.marginLeft.slice(0,-2)-15
+            n=list.style.marginLeft.slice(0,-2)
           }
           // 移动时滚动条继续显示,滚动暂停
           list.style.animationPlayState='paused'
           scollPoint.style.opacity='1'
           document.getElementById('line').style.opacity='1'
-          
         }
         document.onmouseup = function(ev){
           var oevent=ev||event;
           document.onmousemove = null;
           document.onmouseup = null;
+
           // 清除样式改动
           scollPoint.removeAttribute("style")
           list.removeAttribute("style")
+
           // 取消显示滚动条，开始滚动
           list.style.animationPlayState='running'
           document.getElementById('line').style.opacity='0'
+
           // 通过设置动画开始时间让动画从鼠标放开的位置开始播放
-          list.style.animationDelay=25*n.slice(0,-2)/1200+'s'
-          scollPoint.style.animationDelay=-25*m.slice(0,-2)/(document.getElementById('line').offsetWidth-79)+'s'
-          console.log(n,m,list.style.animationDelay,scollPoint.style.animationDelay)
+          list.style.animationDelay=25*n/2000+'s'
+          scollPoint.style.animationDelay=-25*m/(document.getElementById('line').offsetWidth-79)+'s'
     　　}
       }
     }
